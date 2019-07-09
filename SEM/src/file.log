@@ -1,0 +1,238 @@
+[2019-06-26 14:53:30] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "pub8iLO-vhVr6zKPPMcNwA", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 14:54:36] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "4buU25-s_HtKBdQK6NSyHQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 14:55:11] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "tz5hH1DVyDbgzBYNGRNQjA", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 14:55:26] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "qXY-r0qvDVXQQ62L91svIQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 14:55:55] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "6kaxB-0gTvjmk3GSQke3hA", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 14:56:03] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "9pAcmJZOvQllMyQ9EEO0ZQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 14:58:11] google-ads.WARNING: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 7703394105, RequestId: "r9Vo4bzvMfDgicUKC2qsiw", IsFault: 1, FaultMessage: "["User doesn't have permission to access customer. Note: If you're accessing a client customer, the manager's customer id must be set in the 'login-customer-id' header. See https:\/\/developers.google.com\/google-ads\/api\/docs\/concepts\/call-structure#login-customer-id"]"  
+[2019-06-26 14:58:11] google-ads.NOTICE: Request
+-------
+Method Name: /google.ads.googleads.v1.services.GoogleAdsService/Search
+Host: googleads.googleapis.com
+Headers: {
+    "x-goog-api-client": "gl-php\/7.3.5 gapic\/ gax\/0.38.1 grpc\/1.21.3",
+    "x-goog-request-params": "customer_id=7703394105",
+    "developer-token": "REDACTED",
+    "login-customer-id": "8223589907"
+}
+Request: {"customerId":"7703394105","query":"SELECT campaign.name, campaign.id, ad_group.id, ad_group.name FROM ad_group","pageSize":1000}
+
+Response
+-------
+Headers: {
+    "request-id": "r9Vo4bzvMfDgicUKC2qsiw",
+    "date": "Wed, 26 Jun 2019 18:58:11 GMT",
+    "alt-svc": "quic=\":443\"; ma=2592000; v=\"46,44,43,39\""
+}
+
+Fault
+-------
+Status code: 7
+Details: The caller does not have permission
+Failure: {"errors":[{"errorCode":{"authorizationError":"USER_PERMISSION_DENIED"},"message":"User doesn't have permission to access customer. Note: If you're accessing a client customer, the manager's customer id must be set in the 'login-customer-id' header. See https:\/\/developers.google.com\/google-ads\/api\/docs\/concepts\/call-structure#login-customer-id"}]}  
+[2019-06-26 14:59:00] google-ads.WARNING: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 7703394105, RequestId: "o_RPx0AZEHmWovV5bdzQeA", IsFault: 1, FaultMessage: "["User doesn't have permission to access customer. Note: If you're accessing a client customer, the manager's customer id must be set in the 'login-customer-id' header. See https:\/\/developers.google.com\/google-ads\/api\/docs\/concepts\/call-structure#login-customer-id"]"  
+[2019-06-26 14:59:00] google-ads.NOTICE: Request
+-------
+Method Name: /google.ads.googleads.v1.services.GoogleAdsService/Search
+Host: googleads.googleapis.com
+Headers: {
+    "x-goog-api-client": "gl-php\/7.3.5 gapic\/ gax\/0.38.1 grpc\/1.21.3",
+    "x-goog-request-params": "customer_id=7703394105",
+    "developer-token": "REDACTED",
+    "login-customer-id": "8223589907"
+}
+Request: {"customerId":"7703394105","query":"SELECT campaign.name, campaign.id, ad_group.id, ad_group.name FROM ad_group","pageSize":1000}
+
+Response
+-------
+Headers: {
+    "request-id": "o_RPx0AZEHmWovV5bdzQeA",
+    "date": "Wed, 26 Jun 2019 18:58:59 GMT",
+    "alt-svc": "quic=\":443\"; ma=2592000; v=\"46,44,43,39\""
+}
+
+Fault
+-------
+Status code: 7
+Details: The caller does not have permission
+Failure: {"errors":[{"errorCode":{"authorizationError":"USER_PERMISSION_DENIED"},"message":"User doesn't have permission to access customer. Note: If you're accessing a client customer, the manager's customer id must be set in the 'login-customer-id' header. See https:\/\/developers.google.com\/google-ads\/api\/docs\/concepts\/call-structure#login-customer-id"}]}  
+[2019-06-26 14:59:10] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "jtCsKIVa7-DXzJ_EqRlmbg", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 14:59:15] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "lCEHiP3wagCjW5uLt9YptA", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 14:59:20] google-ads.WARNING: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 7703394105, RequestId: "3NGMZY5YIQip43O-zs3C9g", IsFault: 1, FaultMessage: "["User doesn't have permission to access customer. Note: If you're accessing a client customer, the manager's customer id must be set in the 'login-customer-id' header. See https:\/\/developers.google.com\/google-ads\/api\/docs\/concepts\/call-structure#login-customer-id"]"  
+[2019-06-26 14:59:20] google-ads.NOTICE: Request
+-------
+Method Name: /google.ads.googleads.v1.services.GoogleAdsService/Search
+Host: googleads.googleapis.com
+Headers: {
+    "x-goog-api-client": "gl-php\/7.3.5 gapic\/ gax\/0.38.1 grpc\/1.21.3",
+    "x-goog-request-params": "customer_id=7703394105",
+    "developer-token": "REDACTED",
+    "login-customer-id": "8223589907"
+}
+Request: {"customerId":"7703394105","query":"SELECT campaign.name, campaign.id, ad_group.id, ad_group.name FROM ad_group","pageSize":1000}
+
+Response
+-------
+Headers: {
+    "request-id": "3NGMZY5YIQip43O-zs3C9g",
+    "date": "Wed, 26 Jun 2019 18:59:19 GMT",
+    "alt-svc": "quic=\":443\"; ma=2592000; v=\"46,44,43,39\""
+}
+
+Fault
+-------
+Status code: 7
+Details: The caller does not have permission
+Failure: {"errors":[{"errorCode":{"authorizationError":"USER_PERMISSION_DENIED"},"message":"User doesn't have permission to access customer. Note: If you're accessing a client customer, the manager's customer id must be set in the 'login-customer-id' header. See https:\/\/developers.google.com\/google-ads\/api\/docs\/concepts\/call-structure#login-customer-id"}]}  
+[2019-06-26 15:05:49] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "q_DZpSwFzNZhVeEqrIU2Jw", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:42:39] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "yZIsDIGsCK7635IP6XUb-w", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:43:55] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "JmjLLLuV3f4DXKjMfIJw7Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:45:00] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "6XkoCkzLWVYaL8Ppl0q_0Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:49:53] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "TcsBagBMChIsm2ZNSEXoFg", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:51:10] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "3dFR_qDkpAZ039VBOyqxMA", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:51:45] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "FI2PrXhj-dA_M8juXLTI3A", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:52:14] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Ycp8T2LL56EjGdKipxruOQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:53:33] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "lIy1EBV2NB-KJIsWyKY08Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:53:58] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "H42s3DQJiYISW0Yn2HxCog", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:54:42] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "RmtXBuJwzTxKvUUlO9xk9Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:56:20] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "2Smxb_SeBvxREXgMfAHVHg", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:56:54] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Nm537ZrKeBKoWaVZBfbUxg", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:58:14] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "YTNf9yscOssPvBDa9E2tIg", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 15:59:43] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "ITzfJLOhmqn9UcqJAGam2Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:00:56] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "-JVPq9BoO0kNROP4AbEpKQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:01:13] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "aJ5vdU9hIt4OZtLdTGWEiA", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:01:50] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "bONzyX64kFx_r-fx4-6eaQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:02:34] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "ryPm4G3mps41D8pgB9pcbQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:02:58] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "fydlHQOYIPYJJ8P34Q4fEg", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:03:35] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Fy0bYavSmTyT6-5qwrf_FQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:04:14] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "mpZuBwizeC7mzP-NJupikQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:04:59] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "UOMcGxKkfi_G6jt77hd3MQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:06:15] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "ociJfHIScGeaswsVEa2jqQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:08:16] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "pFtjqMdupFYN6EDoKyd72A", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:09:03] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "SYaFN2lvUZSvQlTiaPAVvg", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:09:39] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "5lh3Jvft8m49MwSubyuRdw", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:10:33] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "zv1lY4xD9_ywzxElVSLsKw", IsFault: 0, FaultMessage: "None"  
+[2019-06-26 16:11:01] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "-iOoCuIburVNA39W-St9vg", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:11:29] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Clwri7_mC8B1zUUZFwTYiA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:16:11] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "7VwD-dqWI5HFf0h1tQC2yg", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:35:27] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "FK2nlELkGlQR_3HYej4g1g", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:36:06] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "XcJ7Yl9Gb7XAxnavTYtlUg", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:40:45] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "-3T0PO9eQ9d-WsiP7cQYww", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:41:19] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "yguSm9sFp1YKdxXtuUwsAQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:41:56] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "1bXwxd8cxa8YNTBOhU8G8g", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:42:14] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "nhgW7uOqe8XPCpPW_Jy60g", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:42:29] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "4PnzdGRX-qPaiBknOzR5CA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:51:24] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "sAYnytghLINX79ujBQJIdQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:54:24] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "5QqIvy-7fw0RoyDq0XuC0g", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:56:05] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "9qfvMLr-Dza3f4qGZZMjnw", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 09:57:03] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "mvGCcrQmcn8ajLS6bzFktA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:05:17] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "7MwQrb0QgFOFkc8Cen4qbQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:08:42] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "51O2njU5R4eHCaxVvHL3yA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:09:19] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "aE7cqb5Gh2SNVRL5yi3VMw", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:09:39] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Qv8sxaY27p6JZK_vZ9lY5g", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:09:59] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "rp6MgeMoLz_mbYXkYLPVCg", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:11:13] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "55R7iGVFVBBcl0R8NFo24Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:11:27] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "0zde1pvPYhjBrv7QS__O0g", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:11:44] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "QBeyIkRdbRSryoLfqXyqgw", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:13:31] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "OvoHyD2oNiQZFiQwuZhqsQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:14:57] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "mjB6ULcKSCaj188NutZ_xA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:17:16] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "EPwvZlugoiZOU5v-en0EaQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:35:01] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "inRordjpP2WyFIDWU6Lvdg", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:35:59] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "ALbGCwrI0thbAdN4dikvLQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:37:04] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Idy-ZJtqpENRq-E9Fle72g", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:37:45] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "_ILMda6IjvHozpZDuGxv9g", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:38:44] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "r_Vvxwz6rdOoUsgc7TNHEQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:39:30] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "NIX8Z9AEOWPthhQZpSXzyw", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:40:54] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "UO8y60TscCgEJGrYc_RIeQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:46:29] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "00VuLm-z3Q3eSAkKkTfPew", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:46:44] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "cZL7Oik5KScxe-NLIW4LWw", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:48:38] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "uoRtPGuoOUNgvUOzulfJyw", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:56:38] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "wwjdshwB9v8pyj-KGAHAxw", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:57:24] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "NZpVEGo96JY-upWv9_LPnA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:58:31] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "EEvPToRkadTpXyUR3TvtaQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 10:59:39] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "XIFpe5issgUsIOYfpwF6yQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:00:06] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "pPZWSEpliG_a2PJO5c0A5w", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:00:28] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "rmp5uBsn3keK7ywSTHR50Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:00:51] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Mpv39B9cU6C2GryaZ_eKyg", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:04:06] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "hUGE9qCWfLrbdIO183_j5Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:13:33] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "p5aj3OYjja47eBJdJwTF2Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:13:42] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "mVjnlZNCJgFMd9diveAbqA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:14:28] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "oqOb8b63bxyrNfaHzhL83A", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:15:23] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "fBHqyQ0YjbhgHhvjR2EFSA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:17:33] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "HWN1v6fswBSfz0Y6w7unhQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:17:57] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "CheTFtcPVXbux1mpQGI56g", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:19:59] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "2xCwXLZsz_PSqX1r_irPoA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:21:32] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "UwakYRNfrQmGmCuPoYep2Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:22:35] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "GDA6sQM2hxVuiQnhZ3WUpQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:23:53] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "DjKRm5qCjQhtpZwtohWZ2w", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:24:27] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "QjApvvJhCGqgVIUVr45-VA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:24:59] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "wUUr6OZy1DDwK97eqB4OIw", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:25:30] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "bHgwBlIMbXF9ZVniNcEMJA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:25:39] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "OKBLP4PaT1UM6g7NUjzU5A", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:28:02] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "UDbMW8bBVVfT3nBwCtvMlA", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:28:08] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "XNiqLRjjp1w_AzDaj9xhXw", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:28:15] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "DFGvMxlt1GiD_4fSNerVhw", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:28:19] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "lVKm1ji9YoIoKsBmrZRX1Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 11:28:22] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "3SolFCplnJTbrIqUWaOeKg", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 13:11:50] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "em8A-pGpB3srzxIOd5aTng", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 13:13:01] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "uTVyVccVm9VbQ5zWGNh48w", IsFault: 0, FaultMessage: "None"  
+[2019-06-27 14:00:14] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "rK7Jg4aKE9RXm1l41dZbxw", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 08:02:38] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "-YBwPi09cWsd6hQJLcVt-Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:03:39] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "p6VHKtcylMQfQ5f0CbymAA", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:03:51] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "eAkSHZM3WElTF1s2vsHMqg", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:05:00] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "MZ7oIGF7s5eEDDJFS1fhSg", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:09:28] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "1Y6Wehrtf_oNszLSPXlH7Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:10:03] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "3hTXv39w6x51X9Gde0Urqg", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:10:07] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "FCEEqHsdB8v5jQMJlr6Imw", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:10:10] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "xE8iQ0eh8a424eTd_HmdHA", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:10:13] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "_7wBoXTRQPU4PQAzgO9d7Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:10:21] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Hus8kwc1t3MCwIEG3LHzCw", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:10:43] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "KFFEfF7QQToXQkrc-YFHiQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:12:11] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "THlJTtZSaUEkVGghde4l2w", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:12:25] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "HBXh1n7fM-mi-MSOG4Jyrw", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:12:59] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "A7hcWtWBPRYurbw623CeqA", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:13:04] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "WIq2W-JVXdAVLY043u3GBQ", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:16:04] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "m2BDVBeiT_xEOQwJg4O86Q", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:28:46] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "zmfF7nnzZ3dPip2vrsZpCg", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:28:57] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "O--oE6Y_v3EZDm4Kn1BZ7A", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 09:29:06] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "4iJ_uJYwe_4zlaF4Fn7seA", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 13:19:38] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "0vWLbhX7pJD7aYxX66xC9g", IsFault: 0, FaultMessage: "None"  
+[2019-06-28 16:30:08] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "VpaXJwVTx2JSq8X3J2MKDw", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 11:47:53] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "CEEijNKzsEu20uxve-WWmw", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 13:13:15] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "gVwoLaTcNitXOtZQ0TxsDQ", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 14:28:26] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "hWrGFQ10RcgGDknsfmC6Gw", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 14:29:25] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "pq9qR5uHHm8WsuK6sf9m-Q", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 14:30:19] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "l3cHpvzgYi8-V8DJT9Yzhw", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 14:30:44] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "_4pCq4uByHQ6qJeLhOMbiQ", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 14:35:58] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "MlvGdcsJGuMo93a9IknnRA", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 14:37:05] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "jO5fRVFuXBFvVlKK9VQVwg", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 15:56:34] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "X_r6OB217jd4pcvqlHoOBw", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 15:56:53] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "aY7JSaJJq0tibVLjCZaUVQ", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 15:56:56] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "YrXdZmjPrvDmwBzWqlEspg", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 15:57:00] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "obInb1XNY3bkec8sYWGASQ", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 15:57:03] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "D4PnsYQSYCzHGmu7O0BWwQ", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 15:57:07] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Y5YlfuFX9nuBbXE0lqcfbQ", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 15:57:10] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "JRVc6AO1H43mdH3uneQDbA", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 15:57:13] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "MgZvAuWyccKBlXCLEsANaQ", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 15:57:17] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "LH9k2D_5Uil7ZIiiVh2wtw", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 16:04:42] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "3otYT6OJyzpYV0R9e2ZTog", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 16:09:23] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "SDOxTKc3hz1h70gTtjfT0Q", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 16:10:01] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "8oBnKrhVV99RI9X7SUPaww", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 16:13:36] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "av8JO-w010yXOHPX2lLN4w", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 16:14:45] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "fcEWQSDVNE_9PgHwcPTSvw", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 16:15:14] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "16PjM5OingNR4pltFFaSjg", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 16:15:24] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "vnjgPS_n8sQM9AQ5XRZF7A", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 16:26:38] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Vgs53_dec7i24ng7i5BXKw", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 16:29:24] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "dY_FDA9SK3WxuwTJMwIEAg", IsFault: 0, FaultMessage: "None"  
+[2019-07-02 16:36:25] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "e01SxpcXD1Y3BOk9cwToUw", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 10:51:57] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "ekyojt3zN3OhlBIb5Jc0Ug", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 11:30:17] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "IQPnygP9Df74At32e7J6Sw", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 11:34:31] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "u6UuEx5bgTu-4lQBsyKOIw", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 12:31:29] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "mPb0Q3guHuLgepkrolkrVg", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 12:40:02] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "O-BpT_zet5gj7r8yOP7oAw", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 12:40:07] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Jp2EpQLkbbfGZqM4dlDNwg", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 12:40:34] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "Qert_TTITwcjNlhy1lif7g", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 12:42:28] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "1WvYtS_yT7jxHPGPVrQUhQ", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 12:43:12] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "VxqIu92Pai8LXqZA0HAflQ", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 12:47:24] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "R38Rf8xLRstc9VtwfDZULA", IsFault: 0, FaultMessage: "None"  
+[2019-07-03 12:49:07] google-ads.INFO: Request made: Host: "googleads.googleapis.com", Method: "/google.ads.googleads.v1.services.GoogleAdsService/Search", ClientCustomerId: 8223589907, RequestId: "pCM9O-36hZzmnj4P9DiYyg", IsFault: 0, FaultMessage: "None"  

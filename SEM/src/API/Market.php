@@ -1,0 +1,575 @@
+<?php
+
+namespace API;
+
+//use GetOpt\GetOpt;
+//use Google\Ads\GoogleAds\Examples\Utils\ArgumentNames;
+//use Google\Ads\GoogleAds\Examples\Utils\ArgumentParser;
+use Google\Ads\GoogleAds\Lib\V1\GoogleAdsClient;
+use Google\Ads\GoogleAds\Lib\V1\GoogleAdsClientBuilder;
+use Google\Ads\GoogleAds\Lib\V1\GoogleAdsException;
+use Google\Ads\GoogleAds\Lib\OAuth2TokenBuilder;
+use Google\Ads\GoogleAds\Util\V1\ResourceNames;
+use Google\Ads\GoogleAds\V1\Common\DeviceInfo;
+use Google\Ads\GoogleAds\V1\Enums\DeviceEnum\Device;
+//use Google\Ads\GoogleAds\V1\Errors\GoogleAdsError;
+use Google\Ads\GoogleAds\V1\Resources\AdGroupBidModifier;
+use Google\Ads\GoogleAds\V1\Services\AdGroupBidModifierOperation;
+use Google\ApiCore\ApiException;
+use Google\Protobuf\DoubleValue;
+use Google\Protobuf\StringValue;
+
+//use Google\Ads\GoogleAds\V1\Services\GoogleAdsRow;
+
+/**
+ * Market Class
+ *
+ * @category  Market Details
+ * @package   SEM
+ */
+class Market {
+
+    private $root_url = "https://www.alphavantage.co/query?";
+    private $apikey = "6W5BVCYADHYMRG5O";
+    private $db = null;
+    public $today = "";
+    public $yesterday = "";
+    public $error = "";
+    public $markets = array();
+    public $id = null;
+    public $interval = "1min";
+    public $symbol = null;
+    public $outputsize = "compact";
+    public $datatype = "json";
+    public $request_params = array();
+    public $request_url = "";
+    public $results = array();
+    public $test_duration = 9;
+
+    public function __construct() {
+        global $db;
+        global $MAIN_PROPS;
+        $this->db = $db;
+        $this->today = date("Y-m-d");
+        $this->yesterday = date("Y-m-d", time() - 60 * 60 * 24);
+        $this->test_duration = intval($MAIN_PROPS["MARKET"]["interval"]);
+    }
+
+    public function __destruct() {
+        
+    }
+
+    /**
+     * buildRequestUrl
+     * 
+     * Compiles request params and builds the request url
+     */
+    public function buildRequestURL() {
+        $request_temp_hold = array();
+        foreach ($this->request_params as $key => $value) {
+            $temp_value = $key . "=" . $value;
+
+            array_push($request_temp_hold, $temp_value);
+        }
+        $request_text = implode("&", $request_temp_hold);
+        $this->request_url = $this->root_url . $request_text . "&" . "apikey=" . $this->apikey;
+    }
+
+    /**
+     * GetPreviousMarket
+     * 
+     * @param type $market
+     */
+    public function GetPreviousMarket($market) {
+
+        $MARKET_ID = intval($market["id"]);
+        $MARKET_SYMBOL = $market["symbol"];
+        $this->db->where("market_id", $MARKET_ID);
+        $this->db->where("date", $this->today);
+        $this->db->get("market_history");
+
+        if ($this->db->count > 0) {//MARKET HAS BEEN RUN NO NEED FOR PREVIOUS DAY
+            $this->error .= "MARKET - " . $MARKET_SYMBOL . " HAS BEEN BUILT" . PHP_EOL;
+        } else {//MARKET HAS NOT BEEN RUN NEED PREVIOUS DAY
+            $this->error .= "MARKET - " . $MARKET_SYMBOL . " NEEDS TO BE BUILT" . PHP_EOL;
+            $api_count = 0;
+            $run_api = true;
+            //***
+            $api_count = $api_count + 1;
+            $temp = $this->GetTimeSeriesDaily($MARKET_SYMBOL);
+            if (isset($temp["Time Series (Daily)"])) {
+                $run_api = false;
+                $market_history = array(
+                    "market_id" => $MARKET_ID,
+                    "date" => $this->today,
+                    "previous_close" => $temp["Time Series (Daily)"][$this->yesterday]["4. close"],
+                    "last_trading_day" => $this->yesterday
+                );
+                $id = $this->db->insert('market_history', $market_history);
+                if ($id) {
+                    $this->error .= "MARKET - " . $MARKET_SYMBOL . " HAS BEEN BUILT" . PHP_EOL;
+                } else {
+                    $this->error .= "MARKET - " . $MARKET_SYMBOL . " ERROR ADDING TO DATABASE" . PHP_EOL;
+                }
+            }
+        }
+    }
+
+    public function GetCurrentMarket($market) {
+        $MARKET_ID = intval($market["id"]);
+        $MARKET_SYMBOL = $market["symbol"];
+        $run_api = true;
+        //***
+        $temp = $this->GetTimeSeriesIntraday($MARKET_SYMBOL);
+        $count = 0;
+        if (isset($temp["Time Series (1min)"])) {
+            $run_api = false;
+            foreach ($temp["Time Series (1min)"] as $refresh_time => $series_data) {
+                if ($count === 0) {
+                    $new_number = round(floatval($series_data["4. close"]), 2);
+                    $refreshed = $temp["Meta Data"]["3. Last Refreshed"];
+                }
+                if ($count <= $this->test_duration) {
+                    $original_number = round(floatval($series_data["4. close"]), 2);
+                }
+                if ($count === $this->test_duration) {
+                    $original_number = round(floatval($series_data["4. close"]), 2);
+                }
+                $count = $count + 1;
+            }
+            $increase = $new_number - $original_number;
+            $percent_increase = ( $increase / $original_number ) * 100;
+            $results["symbol"] = $MARKET_SYMBOL;
+            $results["price"] = $new_number;
+            $results["change"] = $increase;
+            $results["change_percent"] = $percent_increase;
+            $results["dt_refreshed"] = $refreshed;
+            $data = array(
+                "price" => $results["price"],
+                "change_percent" => $results["change_percent"],
+                "dt_refreshed" => $results["dt_refreshed"],
+            );
+            $this->db->where("market_id", $MARKET_ID);
+            $this->db->where("date", $this->today);
+            $this->db->update("market_history", $data);
+            $this->error .= "MARKET " . $MARKET_ID . " HAS BEEN UPDATED" . PHP_EOL;
+        } else {
+            $this->error .= "MARKET - " . $MARKET_SYMBOL . " FAILED: " . var_export($temp);
+        }
+    }
+
+    public function RecurringBuild($id = null) {
+
+        if (!is_null($id)) {
+            $this->db->where("id", intval($id));
+            $markets = $this->db->getOne("market");
+
+            $this->GetPreviousMarket($markets);
+            $this->GetCurrentMarket($markets);
+        } else {
+            $markets = $this->GetMarketList();
+            for ($n = 0; $n < count($markets); $n++) {
+                $this->GetPreviousMarket($markets[$n]);
+                $this->GetCurrentMarket($markets[$n]);
+                sleep(5);
+            }
+        }
+        //return $this->error;
+    }
+
+    public function executeRequest() {
+        $contents = file_get_contents($this->request_url);
+        if ($contents !== false) {
+            $contents = json_decode($contents, true);
+            return $contents;
+        }
+    }
+
+    /**
+     * Used to find the last days closing price
+     */
+    public function GetTimeSeriesDaily($_symbol = null) {
+        $function = "TIME_SERIES_DAILY";
+        if (!is_null($_symbol)) {
+            $symbol = $_symbol;
+            $this->request_params = array(
+                "function" => $function,
+                "symbol" => $symbol,
+                "outputsize" => $this->outputsize,
+                "datatype" => $this->datatype
+            );
+            $this->buildRequestURL();
+            return $this->executeRequest();
+        } else {
+            //ERROR - NO SYMBOL
+        }
+    }
+
+    public function GetTimeSeriesIntraday($_symbol = null) {
+        $function = "TIME_SERIES_INTRADAY";
+        if (!is_null($_symbol)) {
+            $symbol = $_symbol;
+            $this->request_params = array(
+                "function" => $function,
+                "symbol" => $symbol,
+                "interval" => $this->interval,
+                "outputsize" => $this->outputsize,
+                "datatype" => $this->datatype
+            );
+            $this->buildRequestURL();
+            return $this->executeRequest();
+        } else {
+            //ERROR - NO SYMBOL
+        }
+    }
+
+    public function GetMarketList() {
+        $this->db->where("fg_enabled", 1);
+        $markets = $this->db->get("market");
+        return $markets;
+    }
+
+    /**
+     * executeTriggers
+     * 
+     */
+    public function executeTriggers() {
+        //Get 
+        $query = "
+            SELECT	e.id AS 'event_id', e.market_id AS 'event_market_id', e.direction AS 'event_direction', e.amount AS 'event_amount',
+                        se.scenario_id AS 'scenario_id',
+                        s.ad_group_list AS 'ad_group_list', s.action_direction AS 'action_direction', s.action_amount AS 'action_amount',
+                        a.account_id AS 'account_id'
+            FROM 	event e
+            JOIN 	scenario_event se
+                            ON	se.event_id = e.id
+            JOIN 	scenario s
+                            ON	se.scenario_id = s.id
+            JOIN 	account_scenario a
+                            ON	a.scenario_id = s.id
+            WHERE	e.fg_enabled = 1
+                            AND	se.fg_enabled = 1
+                            AND     s.fg_enabled = 1;";
+        $temp = array();
+        $events = $this->db->rawQuery($query);
+        for ($n = 0; $n < count($events); $n++) {
+            $temp2 = array(
+                "market" => $events[$n]["event_market_id"],
+                "direction" => $events[$n]["event_direction"],
+                "amount" => $events[$n]["event_amount"],
+            );
+            if (!array_key_exists($events[$n]["scenario_id"], $temp)) {
+                $temp[$events[$n]["scenario_id"]] = array(
+                    "account_id" => $events[$n]["account_id"],
+                    "ad_group_list" => $events[$n]["ad_group_list"],
+                    "action_direction" => $events[$n]["action_direction"],
+                    "action_amount" => $events[$n]["action_amount"],
+                    "events" => array()
+                );
+            }
+            if (!array_key_exists($events[$n]["scenario_id"], $temp)) {
+                $temp[$events[$n]["scenario_id"]]["events"][$events[$n]["event_id"]] = array();
+            }
+            $temp[$events[$n]["scenario_id"]]["events"][$events[$n]["event_id"]] = $temp2;
+        }
+
+        foreach ($temp as $scenario_id => $scenario) {
+            $event_triggered = false;
+            $this->db->where("scenario_id", intval($scenario_id));
+            $this->db->orderBy("date", "Desc");
+            $scenario_history = $this->db->getOne("scenario_history");
+            /*
+             * See if the event was triggered in the last 24 hours
+             * if so then skip trigger
+             */
+            if ($scenario_history) {
+
+                $timestamp = strtotime($scenario_history["date"]);
+                $cDate = strtotime(date('Y-m-d H:i:s'));
+                $oldDate = $timestamp + 86400;
+                if ($oldDate > $cDate) {
+                    //Event triggered less than 24 hours ago
+                    echo "<br>EVENT PREVIOUSLY TRIGGERED<br>";
+                    $event_triggered = true;
+                }
+            }
+            if (!$event_triggered) {
+                $message = "";
+                foreach ($scenario["events"] as $event_id => $event) {
+                    if (!$event_triggered) {
+                        if ($this->EventHappened($event, $event_id)) {
+                            $event_triggered = true;
+
+                            if (array_key_exists("ad_group_list", $scenario)) {
+                                $ad_group_list = explode(",", $scenario["ad_group_list"]);
+                                /*
+                                  echo "Ad Group List:<pre>" . var_export($ad_group_list, 1) . "<pre>";
+                                  // */
+                                $_action = "";
+                                //Loop through the list of ad groups to change
+                                foreach ($ad_group_list as $key => $value) {
+                                    $customer_id = $scenario["account_id"];
+                                    $ad_group_id = $value;
+                                    $oAuth2Credential = (new OAuth2TokenBuilder())->fromFile()->build();
+                                    $googleAdsClient = (new GoogleAdsClientBuilder())->fromFile()
+                                            ->withOAuth2Credential($oAuth2Credential)
+                                            ->build();
+                                    try {
+                                        //Calls function getBidModifiers returns array('value'=>'''device'=>'')
+                                        $modifier = self::getBidModifiers($googleAdsClient, $customer_id, $ad_group_id);
+                                        //LOOP THROUGH TYPES
+                                        /*
+                                          echo "Modifiers for $ad_group_id:<pre>" . var_export($modifier, 1) . "<pre>";
+                                          // */
+                                        $_results = "";
+                                        for ($n = 0; $n < count($modifier); $n++) {
+                                            $device = $modifier[$n]["device"];
+                                            $value = $modifier[$n]["value"];
+                                            $message .= "Ad Group Id: $ad_group_id; Device: $device; Old Modifier - " . $value . "<br>";
+
+                                            //Determin if we are looking for positive or negative value
+                                            $action_direction = intval($scenario["action_direction"]);
+                                            //Get the amount of change
+                                            $action_amount = $scenario["action_amount"];
+                                            //Google uses 1.05 for 5% so I change the value to a whole number 5
+                                            $modifier_modified = $this->modifyGoogleValue($value);
+                                            //if directin is 1 then it is an addition if it is a 0 then it is subtractoin
+                                            if ($action_direction === 1) {
+                                                $new_bid = $modifier_modified + $action_amount;
+                                                $_dir = "INCREASED FROM";
+                                            } else {
+                                                $_dir = "DECREASED FROM";
+                                                $new_bid = $modifier_modified - $action_amount;
+
+                                                /* if ($new_bid <= 0) {
+                                                  $new_bid = 0;
+                                                  } */
+                                            }
+
+                                            //Convert bid back to Google value 1.00
+                                            $new_bid = $new_bid / 100;
+                                            $new_bid = $new_bid + 1;
+                                            $message .= "New Modifier: $new_bid; ";
+                                            $_action .= "Ad Group bid $_dir $value to $new_bid ";
+
+                                            /**
+                                             * Try to adjust the bid by changing it from the old amount to the new amount
+                                             */
+                                            try {
+                                                $_results .= self::editBidModifiers($googleAdsClient, $customer_id, $ad_group_id, $new_bid, $device);
+                                            } catch (GoogleAdsException $googleAdsException) {
+                                                $exc = $googleAdsException->getRequestId();
+                                                $this->error .= "Request with ID '$exc' has failed. Google Ads failure details:" . PHP_EOL;
+                                                foreach ($googleAdsException->getGoogleAdsFailure()->getErrors() as $error) {
+                                                    $errCode = $error->getErrorCode()->getErrorCode();
+                                                    $errMsg = $error->getMessage();
+                                                    $this->error .= "$errCode: $errMsg" . PHP_EOL;
+                                                }
+                                            } catch (ApiException $apiException) {
+                                                $exc = $apiException->getMessage();
+                                                $this->error .= "ApiException was thrown with message '$exc'." . PHP_EOL;
+                                            }
+                                        }
+                                    } catch (GoogleAdsException $googleAdsException) {
+                                        $reqId = $googleAdsException->getRequestId();
+                                        $this->error .= "Request with ID '$reqId' has failed.";
+
+                                        foreach ($googleAdsException->getGoogleAdsFailure()->getErrors() as $error) {
+                                            $errCode = $error->getErrorCode()->getErrorCode();
+                                            $errMsg = $error->getMessage();
+                                            $this->error .= "$errCode: $errMsg" . PHP_EOL;
+                                        }
+                                    } catch (ApiException $apiException) {
+                                        $errMsg = $apiException->getMessage();
+                                        $this->error .= "ApiException was thrown with message '$errMsg" . PHP_EOL;
+                                    }
+                                }
+                            }
+                            $data = array(
+                                "scenario_id" => intval($scenario_id),
+                                "action" => "Event " . $event_id . " happened. $_action",
+                                "google_response" => $message
+                            );
+                            //echo "Results: " . $_results;
+                            $this->db->insert("scenario_history", $data);
+                            //echo "<br>Error: <br>" . $this->error . "-End Errors</br>";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Gets all of the bid modifiers for the ad group along with their devices
+     * 
+     * @param GoogleAdsClient $googleAdsClient
+     * @param type $customerId
+     * @param type $adGroupId
+     * @return array
+     */
+    public static function getBidModifiers(GoogleAdsClient $googleAdsClient, $customerId, $adGroupId) {
+        $googleAdsServiceClient = $googleAdsClient->getGoogleAdsServiceClient();
+        $query = 'SELECT ad_group.id, '
+                . 'ad_group_bid_modifier.criterion_id, '
+                . 'ad_group_bid_modifier.bid_modifier, '
+                . 'ad_group_bid_modifier.device.type, '
+                . 'campaign.id '
+                . 'FROM ad_group_bid_modifier';
+        if ($adGroupId !== null) {
+            $query .= " WHERE ad_group.id = $adGroupId";
+        }
+        //echo "<br>" . $query . "<br>";
+        $response = $googleAdsServiceClient->search($customerId, $query, ['pageSize' => 100]);
+        $results = array();
+        foreach ($response->iterateAllElements() as $googleAdsRow) {
+            //If the bid value is not null
+            if (!is_null($googleAdsRow->getAdGroupBidModifier()->getBidModifierValue())) {
+                $type = "";
+                if (!is_null($googleAdsRow->getAdGroupBidModifier()->getDevice())) {
+                    $type = Device::name($googleAdsRow->getAdGroupBidModifier()->getDevice()->getType());
+                }
+                $temp = array(
+                    "value" => $googleAdsRow->getAdGroupBidModifier()->getBidModifierValue(),
+                    "device" => $type
+                );
+                array_push($results, $temp);
+            }
+        }
+        return $results;
+    }
+
+    /**
+     * editBidModifiers
+     * 
+     * @param GoogleAdsClient $googleAdsClient
+     * @param type $customerId
+     * @param type $adGroupId
+     * @param type $bidModifierValue
+     * @param type $device
+     * @return string
+     */
+    public static function editBidModifiers(GoogleAdsClient $googleAdsClient, $customerId, $adGroupId, $bidModifierValue, $device) {
+        $temp = "";
+        /*
+         * Depending on the device type we adjust accordingly
+         */
+        switch (strtoupper($device)) {
+            case "MOBILE":
+                $adGroupBidModifier = new AdGroupBidModifier([
+                    "ad_group" => new StringValue(["value" => ResourceNames::forAdGroup($customerId, $adGroupId)]),
+                    "bid_modifier" => new DoubleValue(["value" => $bidModifierValue]),
+                    "device" => new DeviceInfo(["type" => Device::MOBILE])
+                ]);
+                $temp .= self::executeBidChange($adGroupBidModifier, $googleAdsClient, $customerId);
+                break;
+            case "CONNECTED_TV":
+                $adGroupBidModifier = new AdGroupBidModifier([
+                    "ad_group" => new StringValue(["value" => ResourceNames::forAdGroup($customerId, $adGroupId)]),
+                    "bid_modifier" => new DoubleValue(["value" => $bidModifierValue]),
+                    "device" => new DeviceInfo(["type" => Device::CONNECTED_TV])
+                ]);
+                $temp .= self::executeBidChange($adGroupBidModifier, $googleAdsClient, $customerId);
+                break;
+            case 'TABLET':
+                $adGroupBidModifier = new AdGroupBidModifier([
+                    "ad_group" => new StringValue(["value" => ResourceNames::forAdGroup($customerId, $adGroupId)]),
+                    "bid_modifier" => new DoubleValue(["value" => $bidModifierValue]),
+                    "device" => new DeviceInfo(["type" => Device::TABLET])
+                ]);
+                $temp .= self::executeBidChange($adGroupBidModifier, $googleAdsClient, $customerId);
+                break;
+            case 'DESKTOP':
+                $adGroupBidModifier = new AdGroupBidModifier([
+                    "ad_group" => new StringValue(["value" => ResourceNames::forAdGroup($customerId, $adGroupId)]),
+                    "bid_modifier" => new DoubleValue(["value" => $bidModifierValue]),
+                    "device" => new DeviceInfo(["type" => Device::DESKTOP])
+                ]);
+                $temp .= self::executeBidChange($adGroupBidModifier, $googleAdsClient, $customerId);
+                break;
+            default:
+                break;
+        }
+
+
+        /*
+          $adGroupBidModifierOperation = new AdGroupBidModifierOperation();
+          $adGroupBidModifierOperation->setCreate($adGroupBidModifier);
+          $adGroupBidModifierServiceClient = $googleAdsClient->getAdGroupBidModifierServiceClient();
+          $response = $adGroupBidModifierServiceClient->mutateAdGroupBidModifiers(
+          $customerId, [$adGroupBidModifierOperation]
+          );
+
+          foreach ($response->getResults() as $addedAdGroupBidModifier) {
+
+          $temp .= "Added Modifier: " . $addedAdGroupBidModifier->getResourceName();
+          }
+         */
+        return $temp;
+    }
+
+    /**
+     * executeBidChange
+     * 
+     * @param AdGroupBidModifier $adGroupBidModifier
+     * @param GoogleAdsClient $googleAdsClient
+     * @param type $customerId
+     * @return string
+     */
+    public static function executeBidChange(AdGroupBidModifier $adGroupBidModifier, GoogleAdsClient $googleAdsClient, $customerId) {
+        $temp = "";
+        $adGroupBidModifierOperation = new AdGroupBidModifierOperation();
+        $adGroupBidModifierOperation->setCreate($adGroupBidModifier);
+        $adGroupBidModifierServiceClient = $googleAdsClient->getAdGroupBidModifierServiceClient();
+        $response = $adGroupBidModifierServiceClient->mutateAdGroupBidModifiers(
+                $customerId, [$adGroupBidModifierOperation]
+        );
+
+        foreach ($response->getResults() as $addedAdGroupBidModifier) {
+            /** @var AdGroupBidModifier $addedAdGroupBidModifier */
+            $temp .= "Added Modifier: " . $addedAdGroupBidModifier->getResourceName();
+        }
+        return $temp;
+    }
+
+    /**
+     * EventHappened
+     * 
+     * @param type $event
+     * @param type $event_id
+     * @return boolean
+     */
+    public function EventHappened($event, $event_id) {
+
+        $market = intval($event["market"]);
+        $direction = intval($event["direction"]);
+        $amount = floatval(round($event["amount"], 4));
+        $this->db->where("market_id", $market);
+        $this->db->orderBy("date", "desc");
+        $market_history = $this->db->getOne("market_history");
+
+        if ($market_history) {
+            $market_history_change_direction = 1;
+            $market_history_change_percent = floatval(round($market_history["change_percent"], 4));
+            $market_history_change_test = abs($market_history_change_percent);
+            if ($direction === $market_history_change_direction) {
+                if ($market_history_change_test > $amount) {
+                    echo "<br>EVENT $event_id - HAPPENED<br>";
+                    return true;
+                }
+            }
+        }
+
+
+        return false;
+    }
+
+    public function modifyGoogleValue($value = null) {
+        $modified_value = 0;
+        if (!is_null($value)) {
+            $modified_value = ($value * 100) - 100;
+        }
+        return $modified_value;
+    }
+
+}
